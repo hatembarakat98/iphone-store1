@@ -1,0 +1,5 @@
+@media screen and (max-width: 600px) {
+	#cart-total {
+	  top: 110px !important;
+	}
+  }
