@@ -1,0 +1,178 @@
+<!doctype html>
+{% load static %}
+{% include 'partials/_head.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+{% endblock %}
+  <body>
+    {% include 'partials/_header.html' %}
+{% comment %} 
+            <a href="/cart">
+                <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+            </a>
+            <p id="cart-total">{{ forder.get_cart_items }}</p> {% endcomment %}
+    <div class="container" style="margin-top: 125px;">
+        {% block content %}
+        
+        {% endblock content %}
+    </div>
+    {% include 'partials/_footer.html' %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        effect: "slide",
+        speed: 1500,
+      });
+        $('#slidel1').click(swiper,function(){
+            swiper.slideTo(0);
+
+        });
+        $('#slidel2').click(swiper,function(){
+            swiper.slideTo(1);
+        });
+        $('#slidel3').click(swiper,function(){
+            swiper.slideTo(2);
+        });
+        $('#slidel4').click(swiper,function(){
+            swiper.slideTo(3);
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('submit', '#disease-form1', function(e) {
+            e.preventDefault();
+            $form = $(this);
+            var formData = new FormData(this);
+            $.ajax({
+                url: '/hi2',
+                type: 'POST',
+                data: formData,
+                success: function (response) {
+                    $('.error').remove();
+                    console.log(response)
+                    if(response.error){
+                        $.each(response.errors, function(name, error){
+                            error = '<small class="text-muted error">' + error + '</small>'
+                            $form.find('[name=' + name + ']').after(error);
+                        })
+                    }
+                    else{
+                        //alert(response.message);
+                        $('#disease-name').html(response.name1);
+                        $('#disease-description').html(response.description1);
+                        $('#disease-cause').html(response.cause1);
+                        $('#disease-treatment').html(response.treatment1);
+                        //window.location = ""
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).on('submit', '#disease-form', function(e) {
+            e.preventDefault();
+            $.ajax({
+                method: 'POST',
+                url: '/hi2',
+                processData: false,
+                contentType: false,
+                mimeType: "multipart/form-data",
+                success: function () {
+                    /*var json= JSON.parse(data);
+                   console.log(json['myname']);
+                   $('#hi').html(json['myname']);*/
+                   console.log("done");
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".navbar-fixed-top");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
+    <script>
+        var a1 = $(".ac-an");
+        var as1 = $(".new-animate")
+        a1.on('click', function() {
+            as1.css("display", "none");
+            as1.removeClass('aos-animate');
+
+            setTimeout(function() {
+                as1.css("display", "block");
+            }, 500);
+            setTimeout(function() {
+                as1.toggleClass('aos-animate');
+            }, 1000);
+        });
+    </script>
+    <script>
+    $('.slide-links').on('click', 'i', function() {
+        $('.slide-links i.lactive').removeClass('lactive');
+        $(this).addClass('lactive');
+    });
+    </script>
+  
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+    <script>
+      function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+      const csrftoken = getCookie('csrftoken');
+
+    </script>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+  </body>
+</html>

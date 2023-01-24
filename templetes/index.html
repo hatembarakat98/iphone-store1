@@ -1,0 +1,424 @@
+
+{% extends 'store/main.html' %}
+
+{% load static %}
+
+{% block content %}
+      <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      </head>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+          <div class="col">
+               <div class="card">
+                   <p> 
+                      <!--need replace-->
+                      <a href="{% url 'storefilter' '9' %}" target="blank">
+                        <img src="{% static 'images\iphone11pic.jpg' %}" class="card-img-top" alt="..."      >
+                      </a>
+                   </p>
+               </div>
+          </div>
+
+          <div class="col">
+                <div class="card">
+                    <a href="{% url 'storefilter' '10' %}" target="blank">
+                    <img src="{% static 'images\iphone12-ar pic.jpg' %}" class="card-img-top" alt="...">
+                    </a>
+                </div>
+          </div>
+
+
+
+
+          <div class="col">
+            <div class="card">
+              <a href="{% url 'storefilter' '17' %}" target="blank">
+                <img src="{% static 'images\iphone12-mini-ar pic.jpg' %}" class="card-img-top" alt="...">
+
+                </a>
+            </div>
+           </div>
+          <div class="col">
+               <div class="card">
+                  <a>
+                    <a href="{% url 'storefilter' '13' %}" target="blank">
+
+                    <img src="{% static 'images\iphone12-pro-ar pic.jpg' %}" class="card-img-top" alt="...">
+
+                  </a>
+               </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card">
+              <a href="">
+                      <img src="{% static 'images\iphone12-pro-max-ar pic.jpg' %}" class="card-img-top" alt="...">
+              </a>
+            </div>
+        </div>
+        <div class="col">
+          <div class="card">
+               <a href="{% url 'storefilter' '13' %}" target="blank">
+              <img src="{% static 'images\iphone13-mini-ar pic.jpg' %}" class="card-img-top" alt="...">
+
+            </a>
+          </div>
+        </div>
+      <div class="col">
+          <div class="card">
+              <a href="{% url 'storefilter' '13' %}" target="blank">
+              <img src="{% static 'images\iphone13-pro-ar.jpg' %}" class="card-img-top" alt="...">
+            </a>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <a>
+                    <img src="{% static 'images\iphone13-pro-max-ar pic.jpg' %}" class="card-img-top" alt="...">
+            </a>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img src="{% static 'images\iphone14 pic.jpg' %}" class="card-img-top" alt="...">
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <a href="{% url 'storefilter' '13' %}" target="blank">
+              <img src="{% static 'images\iphone14-plus pic.jpg' %}" class="card-img-top" alt="...">
+            </a>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <a href="{% url 'storefilter' '13' %}" target="blank">
+              <img src="{% static 'images\iphone14-pro pic.jpg' %}" class="card-img-top" alt="...">
+            </a>
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="{% url 'storefilter' '13' %}" target="blank">
+                <img src="{% static 'images\iphone14-pro-max pic.jpg' %}" class="card-img-top" alt="...">
+
+              </a>
+
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <a href="">
+              <img src="{% static 'images\iphone-13-ar pic.jpg' %}" class="card-img-top" alt="...">
+              </a>
+
+            </div>
+           </div>
+    </div>
+
+                <center >   <h1>اختر موديلات ايفون للمقارنة</h1>  </center>
+
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <h5>نوع الجوال الاول</h5>
+
+                     <select class="form-select" id="Con" onchange="" aria-label="Default select example" name="ss">
+                         {% for c in cat %}
+                                
+                              <option value="{{c.id}}"> {{c.name}}</option>
+                         {% endfor %}
+                    </select>
+
+                    <div style=" direction: rtl; padding:75px; maragin_top:10px;">
+                     <img id="p_image" src="{{product2.image.url}}" height=200>
+                     <h6 id="p_name"> {{product2.name}} </h6>
+                     <h6 id="p_screan"> {{product2.screan}} </h6>
+                     <img id="p_coverimage" src="{{product2.Covergimage.url}}" height=75>
+                     <h6 id="p_coverage"> {{product2.coverage}} </h6>
+                     <img id="p_camerimage" src="{{product2.Cameraimage.url}}" height=75>
+
+                     <h6 id="p_camera"> {{product2.camera}} </h6>
+                     <img id="p_coreimage" src="{{product2.Coreimage.url}}" height=75>
+
+                     <h6 id="p_core"> {{product2.core}} </h6>
+                     <img id="p_batteryimage" src="{{product2.Battrayimage.url}}" height=75>
+                     <h6 id="p_battery"> {{product2.battery}} </h6>
+                     <img id="p1_imagefront" src="{{product2.Frontimage.url}}" height=75>
+
+                     <h6 id="p_front"> {{product2.front}} </h6>
+                     <h6 id="p_description"> {{product2.description}} </h6>
+                     <div id="circle2" style="color:{{product.mobile_color}}"></div>
+
+                  </div>
+
+         
+
+            </div>
+
+             <div class="col">
+               <h5>نوع الجوال الثاني</h5>
+
+                        <select class="form-select" id="Con2" onchange="" aria-label="Default select example" name="ss">
+                            {% for c in cat %}
+                                 <option value="{{c.id}}"> {{c.name}}</option>
+                            {% endfor %}
+                       </select>
+
+                       <div style=" direction: rtl; padding:75px; maragin_top:10px;">
+                        <img id="p1_image" src="{{product2.image.url}}" height=200>
+                        <h6 id="p1_name"> {{product2.name}} </h6>
+                        <h6 id="p1_screan"> {{product2.screan}} </h6>
+                        <img id="p1_coverimage" src="{{product2.Covergimage.url}}" height=75>
+                        <h6 id="p1_coverage"> {{product2.coverage}} </h6>
+                        <img id="p1_camerimage" src="{{product2.Cameraimage.url}}" height=75>
+
+                        <h6 id="p1_camera"> {{product2.camera}} </h6>
+                        <img id="p1_coreimage" src="{{product2.Coreimage.url}}" height=75>
+
+                        <h6 id="p1_core"> {{product2.core}} </h6>
+                        <img id="p1_batteryimage" src="{{product2.Battrayimage.url}}" height=75>
+                        <h6 id="p1_battery"> {{product2.battery}} </h6>
+                        <img id="p1_imagefront" src="{{product2.Frontimage.url}}" height=75>
+
+                        <h6 id="p1_front"> {{product2.front}} </h6>
+                        <h6 id="p1_description"> {{product2.description}} </h6>
+                        <div id="circle2" style="color:{{product.mobile_color}}"></div>
+ 
+                     </div>
+
+            </div>
+            <div class="col">
+              <h5>نوع الجوال الثالث</h5>
+
+                           <select class="form-select" id="Con3" onchange="" aria-label="Default select example" name="ss">
+                            {% for c in cat %}
+                                 <option value="{{c.id}}"> {{c.name}}</option>
+                            {% endfor %}
+
+                       </select>
+
+                       <div style=" direction: rtl; padding:75px; maragin_top:10px;">
+                        <img id="p2_image" src="{{product2.image.url}}" height=200>
+                        <h6 id="p2_name"> {{product2.name}} </h6>
+                        <h6 id="p2_screan"> {{product2.screan}} </h6>
+                        <img id="p2_coverimage" src="{{product2.Covergimage.url}}" height=75>
+                        <h6 id="p2_coverage"> {{product2.coverage}} </h6>
+                        <img id="p2_camerimage" src="{{product2.Cameraimage.url}}" height=75>
+
+                        <h6 id="p2_camera"> {{product2.camera}} </h6>
+                        <img id="p2_coreimage" src="{{product2.Coreimage.url}}" height=75>
+
+                        <h6 id="p2_core"> {{product2.core}} </h6>
+                        <img id="p2_batteryimage" src="{{product2.Battrayimage.url}}" height=75>
+                        <h6 id="p2_battery"> {{product2.battery}} </h6>
+                        <img id="p2_imagefront" src="{{product2.Frontimage.url}}" height=75>
+
+                        <h6 id="p2_front"> {{product2.front}} </h6>
+                        <h6 id="p2_description"> {{product2.description}} </h6>
+                        <div id="circle2" style="color:{{product.mobile_color}}"></div>
+ 
+                     </div>
+
+
+            </div>
+        </div>
+    <div>
+        <span id="sw"> </span>
+    </div>
+
+
+    <script>
+
+      $("#Con3").change(function () {
+  
+        //var url = $("#Con").attr("value");
+        var id = $(this).val();  // get the selected projectID from the HTML input
+                console.log(id);
+  
+  
+        $.ajax({                       // initialize an AJAX request
+          method:"POST",
+          url: '/com',
+  
+          data: {
+            'id': id  ,     // add the project id to the GET parameters
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+          },
+          success: function (data) {
+            console.log(data);
+            console.log(data.Cameraimage)
+  
+            //image prodct
+            $('#p2_name').text(name);
+  
+            $('#p2_screan').text(data.screan);
+               //image prodct
+            $('#p2_image').attr('src','/media/'+(data.image));
+  
+            $('#p2_coverimage').attr('src','/media/'+(data.Covergimage));
+  
+            $('#p2_coverage').text(data.coverage);
+                      //image prodct
+            $('#p2_camerimage').attr('src','/media/'+(data.Cameraimage));
+  
+            $('#p2_camera').text(data.camera);
+                      //image prodct
+            $('#p2_coreimage').attr('src','/media/'+(data.coreimage));
+  
+            $('#p2_core').text(data.core);
+                      //image prodct
+            $('#p2_batteryimage').attr('src','/media/'+(data.Battrayimage));
+  
+            $('#p2_battery').text(data.battery);
+                      //image prodct
+            $('#p2_imagefront').attr('src','/media/'+(data.Frontimage));
+  
+            $('#p2_front').text(data.frot);
+                      //image prodct
+  
+            $('#p2_description').text(data.description);
+  
+            $('#p2_size').text(data.size);
+  
+  
+  
+  
+          }
+        });
+  
+      });
+  
+  
+  
+      $("#Con2").change(function () {
+  
+        //var url = $("#Con").attr("value");
+        var id = $(this).val();  // get the selected projectID from the HTML input
+                console.log(id);
+  
+  
+        $.ajax({                       // initialize an AJAX request
+          method:"POST",
+          url: '/com',
+  
+          data: {
+            'id': id  ,     // add the project id to the GET parameters
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+          },
+          success: function (data) {
+            console.log(data);
+            $('#p1_name').text(name);
+  
+            $('#p1_screan').text(data.screan);
+               //image prodct
+            $('#p1_image').attr('src','/media/'+(data.image));
+  
+            $('#p1_coverimage').attr('src','/media/'+(data.Covergimage));
+  
+            $('#p1_coverage').text(data.coverage);
+                      //image prodct
+            $('#p1_camerimage').attr('src','/media/'+(data.Cameraimage));
+  
+            $('#p1_camera').text(data.camera);
+                      //image prodct
+            $('#p1_coreimage').attr('src','/media/'+(data.coreimage));
+  
+            $('#p1_core').text(data.core);
+                      //image prodct
+            $('#p1_batteryimage').attr('src','/media/'+(data.Battrayimage));
+  
+            $('#p1_battery').text(data.battery);
+                      //image prodct
+            $('#p1_imagefront').attr('src','/media/'+(data.Frontimage));
+  
+            $('#p1_front').text(data.frot);
+                      //image prodct
+  
+            $('#p1_description').text(data.description);
+  
+            $('#p1_size').text(data.size);
+  
+  
+  
+          }
+        });
+  
+      });
+  
+  
+  
+  
+      $("#Con").change(function () {
+  
+        //var url = $("#Con").attr("value");
+        var id = $(this).val();  // get the selected projectID from the HTML input
+                console.log(id);
+  
+  
+        $.ajax({                       // initialize an AJAX request
+          method:"POST",
+          url: '/com',
+  
+          data: {
+            'id': id  ,     // add the project id to the GET parameters
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+          },
+          success: function (data) {
+            console.log(data);
+            $('#p2_name').text(name);
+  
+            $('#p_screan').text(data.screan);
+               //image prodct
+            $('#p_image').attr('src','/media/'+(data.image));
+  
+            $('#p_coverimage').attr('src','/media/'+(data.Covergimage));
+  
+            $('#p_coverage').text(data.coverage);
+                      //image prodct
+            $('#p_camerimage').attr('src','/media/'+(data.Cameraimage));
+  
+            $('#p_camera').text(data.camera);
+                      //image prodct
+            $('#p_coreimage').attr('src','/media/'+(data.coreimage));
+  
+            $('#p_core').text(data.core);
+                      //image prodct
+            $('#p_batteryimage').attr('src','/media/'+(data.Battrayimage));
+  
+            $('#p_battery').text(data.battery);
+                      //image prodct
+            $('#p_imagefront').attr('src','/media/'+(data.Frontimage));
+  
+            $('#p_front').text(data.frot);
+                      //image prodct
+  
+            $('#p_description').text(data.description);
+  
+            $('#p_size').text(data.size);
+  
+  
+  
+          }
+        });
+  
+      });
+    </script>
+  
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+ {% endblock %} 
+
+
+
+
+
+
+
+
+

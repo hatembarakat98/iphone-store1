@@ -1,0 +1,136 @@
+{% load static %}
+{% include 'partials/_head.html' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}" />    
+{% endblock %}
+<body>
+    {% include 'partials/_header.html' %}
+
+    <!-- Swiper -->
+    <div class="swiper-container mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide swiper-slide1">
+            <div class="home-center">
+                <h1 class="new-animate" data-aos="fade-down" data-aos-duration="1500" style="font-size: 100px;"><span style="color: white;text-shadow: 3px 3px 5px green;">BEST</span> <span style="color: green;text-shadow: 3px 3px 5px white;">DETECTOR</span></h1>
+                <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" class="service-description new-animate">
+                    <p style="color: white;">Delectus saepe voluptate necessitatibus dolor maxime optio assumenda deserunt, esse necessitatibus reiciendis dolor.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000" class="discover new-animate">
+                    <a href="#disease-detection"><i class="fa fa-chevron-circle-down slide-buttons"> CHECK NOW</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide swiper-slide2">
+            <div class="home-center">
+                <h1 class="new-animate" data-aos="fade-down" data-aos-duration="1500" style="font-size: 100px;"><span style="color: white;text-shadow: 3px 3px 5px green;">GREEN</span> <span style="color: green;text-shadow: 3px 3px 5px white;">STORE</span></h1>
+                <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" class="service-description new-animate">
+                    <p style="color: white;">Delectus saepe voluptate necessitatibus dolor maxime optio assumenda deserunt, esse necessitatibus reiciendis dolor.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000" class="discover new-animate">
+                    <a href="#hhh"><i class="fa fa-chevron-circle-down slide-buttons"> BUY NOW</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-slide swiper-slide3">
+            <div class="home-center">
+                <h1 class="new-animate" data-aos="fade-down" data-aos-duration="1500" style="font-size: 100px;"><span style="color: white;text-shadow: 3px 3px 5px green;">LANDS</span> <span style="color: green;text-shadow: 3px 3px 5px white;">CARING</span></h1>
+                <div data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" class="service-description new-animate">
+                    <p style="color: white;">Delectus saepe voluptate necessitatibus dolor maxime optio assumenda deserunt, esse necessitatibus reiciendis dolor.</p>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1000" class="discover new-animate">
+                    <a href="#hhh"><i class="fa fa-chevron-circle-down slide-buttons"> CARE NOW</i></a>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+        <div class="slide-links">
+        <h1><i id="slidel1" class="lactive fa fa-leaf ac-an" aria-hidden="true" style="font-size: 30px;"></i></h1>
+        <h1><i id="slidel2" class="fa fa-leaf ac-an" aria-hidden="true" style="font-size: 30px;"></i></h1>
+        <h1><i id="slidel3" class="fa fa-leaf ac-an" aria-hidden="true" style="font-size: 30px;"></i></h1>
+        <h1><i id="slidel4" class="fa fa-leaf ac-an" aria-hidden="true" style="font-size: 30px;"></i></h1>
+        </div>
+      <!--<div class="swiper-pagination"></div>-->
+    </div>
+
+
+
+
+
+    {% include 'partials/_footer.html' %}
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        pagination: {
+          el: ".swiper-pagination",
+        },
+        effect: "slide",
+        speed: 1500,
+      });
+        $('#slidel1').click(swiper,function(){
+            swiper.slideTo(0);
+
+        });
+        $('#slidel2').click(swiper,function(){
+            swiper.slideTo(1);
+        });
+        $('#slidel3').click(swiper,function(){
+            swiper.slideTo(2);
+        });
+        $('#slidel4').click(swiper,function(){
+            swiper.slideTo(3);
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script>
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $(".navbar-fixed-top");
+                $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script>
+    <script>
+        var a1 = $(".ac-an");
+        var as1 = $(".new-animate")
+        a1.on('click', function() {
+            as1.css("display", "none");
+            as1.removeClass('aos-animate');
+
+            setTimeout(function() {
+                as1.css("display", "block");
+            }, 500);
+            setTimeout(function() {
+                as1.toggleClass('aos-animate');
+            }, 1000);
+        });
+    </script>
+   
+    
+  </body>
+</html>

@@ -1,0 +1,117 @@
+
+{% extends 'store/main.html' %}
+{% load static %}
+
+
+{% block content %}
+  <!-- <div class="row mt-5 mb-3">
+      <div class="col-md-12 d-flex justify-content-center">
+          <a class="category-a flex-sm-fill text-sm-center p-3 btn btn-dark m-1" aria-current="page" href="#" style="background: #369A7E;">الكل</a>
+          {% for category in categories %}
+              <a class="category-a flex-sm-fill text-sm-center p-3 m-1 btn btn-outline-dark" aria-current="page" href="#">{{ category.name }}</a>
+          {% endfor %}
+      </div>
+  </div> -->
+
+  <div class="row mt-5">
+    {% for product in products  %}
+      <div class="col-lg-3">
+        <div class="card mt-3 mb-3" style="text-align: right;">
+          <img class="card-img p-2" src="/media/{{ product.image }}" style="width: 50%; position: relative; left: 25%;">
+          <div class="card-body">
+            <h4 class="card-title">{{ product.name }}</h4>
+            <p class="card-text" style="font-size: 19px;"> الذاكرة{{ product.size }}غيغابايت</p>
+            <h6 id="number1" style="text-decoration: line-through;  color: red;">{{ product.price }}ر.س</h6>
+            <div style="text-align: center">
+            <span style="color: {{ product.mobile_color }}; font-size: 35px;">o</span>
+            <span style="color: {{ product.mobile_color2 }}; font-size: 35px;">o</span>
+            <span style="color: {{ product.mobile_color3 }}; font-size: 35px;">o</span>
+            <span style="color: {{ product.mobile_color4 }}; font-size: 35px;">o</span>
+            <!-- <span class="dot" style="background-color: '{{ prodcut.mobile_color }}';">o</span>
+            <span class="dot" style="background: {{ prodcut.mobile_color2 }};"></span>
+            <span class="dot" style="background-color: {{ prodcut.mobile_color3 }};"></span>
+            <span class="dot" style="background: '#456321';"></span> -->
+            </div>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary update-cart">اضف الى السلة</button>
+              <a class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal{{ product.id }}">التفاصيل </a>
+              <div class="price text-success"><h5 class="mt-4">{{ product.price }}</h5></div>
+              <!-- <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div>
+
+  {% for product in products  %}
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{product.id}}" tabindex="-1" aria-labelledby="exampleModal{{product.id}}Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal{{product.id}}Label">{{ product.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card mt-3 mb-3" style="text-align: right;">
+            <img class="card-img p-2" src="/media/{{ product.image }}" style="width: 50%; position: relative; left: 25%;">
+            <div class="card-body">
+              <h4 class="card-title">{{ product.name }}</h4>
+              <p class="card-text" style="text-align: right !important;">{{ product.description }}</p>
+              <p>الحجم: {{ product.size }}</p>
+              <p>الشاشة: {{ product.screan }}</p>
+              <p>المساحة: {{ product.coverage }}</p>
+              <img class="card-img p-2" src="/media/{{ product.Covergimage }}" style="width: 50%;">
+              <p>الكاميرا: {{ product.camera }}</p>
+              <img class="card-img p-2" src="/media/{{ product.Cameraimage }}" style="width: 50%;">
+              <p>المعالج: {{ product.core }}</p>
+              <img class="card-img p-2" src="/media/{{ product.Coreimage }}" style="width: 50%;">
+              <p>البطارية: {{ product.battery }}</p>
+              <img class="card-img p-2" src="/media/{{ product.Battrayimage }}" style="width: 50%;">
+              <p>{{ product.front }}</p>
+              <img class="card-img p-2" src="/media/{{ product.Frontimage }}" style="width: 50%;">
+              <h6 id="number1" style="text-decoration: line-through;  color: red;">{{ product.price }}ر.س</h6>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="price text-success"><h5 class="mt-2">{{ product.price }}</h5></div>
+          <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary update-cart">أضف للسلة</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

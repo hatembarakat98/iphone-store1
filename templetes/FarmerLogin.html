@@ -1,0 +1,139 @@
+<!--
+
+{% load static %}
+ {% block content %}
+  <div class="container">
+    <h2>Login</h2>
+<form method="POST" action="">
+   {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">  username</label>
+    <input type="text" name="username" class="form-control" >
+   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+   
+</div>
+    
+  {% endblock  %}
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static '/css/in-up.css' %}" />
+    <style>
+      .fb-btn {
+        border-color: #499e7d;
+        transition: all .8s;
+      }
+      .fb-btn:hover {
+        border-color: #217052;
+      }
+    </style>
+</head>
+<body>
+<p class="tip">I GREEN</p>
+<div class="cont">
+  <div class="form sign-in">
+    <h2>Welcome Farmers</h2>
+    <form method="POST" action="">
+    {% csrf_token %}
+    <label for="username">
+      <span>user name</span>
+      <input type="text" name="username" />
+    </label>
+    <label for="exampleInputPassword1">
+      <span>Password</span>
+      <input name="password" type="password" id="exampleInputPassword1" />
+    </label>
+    <p class="forgot-pass"><a href="#" class="forgot-pass">Forgot password?</a></p>
+    <button type="submit" name="sign-in" class="submit">Sign In</button>
+    </form>
+    <button type="button" class="fb-btn"><i class="fab fa-facebook-f"></i> Connect with <span>facebook</span></button>
+    <button type="button" class="fb-btn"><i class="fab fa-google"></i> Connect with <span id="span2">google</span></button>
+  </div>
+  <div class="sub-cont">
+    <div class="img">
+      <div class="img__text m--up">
+        <h2>New here?</h2>
+        <p>Sign up and discover great amount of new services!</p>
+      </div>
+      <div class="img__text m--in">
+        <h2>One of us?</h2>
+        <p>If you already has an account, just sign in. We've missed you!</p>
+      </div>
+      <div class="img__btn">
+        <span class="m--up">Sign Up</span>
+        <span class="m--in">Sign In</span>
+      </div>
+    </div>
+    <div class="form sign-up">
+      <h2>Time To Use Intelligence Tools</h2>
+      <form method="POST" action="">
+      {% csrf_token %}
+      <label>
+        <span>Name</span>
+        <input type="text" name="username" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" />
+      </label>
+      <div style="text-align: center;">
+      <label style="display: inline-block; max-width: 200px;">
+        <span>Password</span>
+        <input type="password" name="password1" />
+      </label>
+      <label style="display: inline-block; max-width: 200px;">
+        <span>Confirm Password</span>
+        <input type="password" name="password2" />
+      </label>
+      </div>
+      <button type="submit" name="sign-up" class="submit">Sign Up</button>
+      </form>
+      <button type="button" class="fb-btn"><i class="fab fa-facebook-f"></i> Join with <span>facebook</span></button>
+      <button type="button" class="fb-btn"><i class="fab fa-google"></i> Join with <span id="span2">google</span></button>
+    </div>
+  </div>
+</div>
+
+<!--
+<a href="https://dribbble.com/shots/3306190-Login-Registration-form" target="_blank" class="icon-link">
+  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
+</a>
+<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
+  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
+</a>
+-->
+
+<!-- ************************Dont forget that you need footer or just a tape like twitter and likedin******************************** -->
+
+<script src="{% static '/js/in-up.js' %}"></script>
+<script>
+  if (window.location.pathname != '/login') {
+    document.querySelector('.cont').classList.toggle('s--signup');
+  }
+  {% comment %} document.querySelector('.img__btn').addEventListener('click', function() {
+    
+    console.log("Hello");
+  }); {% endcomment %}
+</script>
+
+<!--<img src="{% static '/images/1.jpg' %}">-->
+
+</body>
+
+
+</html>

